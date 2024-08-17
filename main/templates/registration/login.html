@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="my-5 text-center">Log In de Usuarios</h1>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto col-5">
+          <form action="{% url 'login' %}" method="post" class="text-center border border-primary-subtle p-4 rounded">
+            {% csrf_token %}
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre Usuario</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" name="username" required>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Clave Usuario</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" name="password" required>
+              </div>
+      
+              <div>
+                  <button type="submit" class="btn btn-primary col-12">Iniciar Sesion</button>
+              </div>
+          </form>
+          <div>
+            <p class="text-center">
+              Si aun no tienes tu cuenta <a href="{% url 'crear_user' %}"> Registrate </a>
+            </p>
+          </div>
+
+      </div>
+    </div>
+
+{% endblock %}
+

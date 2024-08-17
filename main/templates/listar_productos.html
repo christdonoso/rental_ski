@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form action="" method="post">
+                {% csrf_token %}
+            <select class="form-select" aria-label="Default select example" name="categoria">
+                <option selected>Seleccione una categoria</option>
+                <option value="Ski">Ski</option>
+                <option value="Botas">Botas</option>
+                <option value="Trineo">Trineo</option>
+                <option value="Snow Board">Snow Board</option>
+                <option value="Otros">Otros</option>
+              </select> 
+              <button type="submit" class="btn btn-primary mt-2 col-12">Filrar</button>
+            </form>
+        </div>
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Arrendar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {%  for equipo in equipos%}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ equipo.nombre }}</td>
+                            <td>{{ equipo.precio }}</td>
+                            <td><a href="arrendar/{{ equipo.id }}" class="btn btn-info">Arrendar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

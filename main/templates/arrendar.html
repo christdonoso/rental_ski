@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-4 mx-auto mt-5">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ equipo.imagen }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ equipo.nombre }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ equipo.categoria }}</li>
+                  <li class="list-group-item">{{ equipo.precio }}</li>
+                </ul>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="text"value="{{equipo.id}}" hidden name="id">
+                        <button class="btn btn-warning col-12">Arrendar</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">fecha</th>
+                    <th scope="col">cliente</th>
+                    <th scope="col">Comentario</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    {%  for arriendo in arriendos %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ arriendo.equipo.nombre }}</td>
+                            <td>{{ arriendo.fecha }}</td>
+                            <td>{{ arriendo.usuario.name }}</td>
+
+                            <td>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <input type="text" value="{{ arriendo.id }}" name="id" hidden>
+                                        <div class="col-9">
+                                            <input type="text"class="form-control"  name="observacion" value="{{ arriendo.observacion }}">
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="submit" class="btn btn-secondary">comentar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>    
+        </div>
+    </div>
+
+{% endblock %}

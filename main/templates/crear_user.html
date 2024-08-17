@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class="my-5 text-center">Registro de Usuarios</h1>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto col-5">
+          <form action="" method="post" class="text-center border border-primary-subtle p-4 rounded">
+            {% csrf_token %}
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre Usuario</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" name="username" required>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Email Usuario</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" name="email" required>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Clave Usuario</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" name="password" required>
+              </div>
+              <select class="form-select mb-3" aria-label="Default select example" name="tipo_usuario">
+                <option selected>Seleccione una tipo usuario</option>
+                <option value="Cliente">Cliente</option>
+                <option value="Operario">Operario</option>
+              </select> 
+              <div>
+                  <button type="submit" class="btn btn-primary col-12">Registrar</button>
+              </div>
+          </form>
+
+          <div>
+            <p class="text-center">
+              si ya estas registrado, inicia sesion <a href="{% url 'login' %}"> iniciar sesion </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
